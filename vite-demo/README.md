@@ -26,6 +26,6 @@ npm install vue-router@4 axios element-plus --save
 - [如果你碰见(esbuild: Failed to install correctly)这个问题](https://blog.csdn.net/m0_37682004/article/details/115001613)(手动安装吧,执行如下)
 ```bash
 node node_modules/esbuild/install.js
-
+```
 
 - [如果你碰见vue-devtools不能用的情况,尝试安装它的beta版本吧,可能还需要翻墙](https://chrome.google.com/webstore/detail/vuejs-devtools/ljjemllljcmogpfapbkkighbhhppjdbg)
