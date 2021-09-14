@@ -1,8 +1,10 @@
+import {userInfo} from "./userInfo"
+
 export default [
 	{
 		url: "/api/get",
 		method: "get",
-		response: ({ query }) => {
+		response: ({query}) => {
 			return {
 				code: 0,
 				data: {
@@ -11,4 +13,14 @@ export default [
 			};
 		},
 	},
+	{
+		url: "/api/login",
+		method: "post",
+		response: () => {
+			return {
+				code: 0,
+				data: userInfo
+			}
+		}
+	}
 ];

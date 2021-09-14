@@ -13,11 +13,13 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 - [vite](https://cn.vitejs.dev)
 - [vite-plugins](https://github.com/vitejs/awesome-vite#plugins)
 - [axios](https://www.kancloud.cn/yunye/axios/234845)
+- [vuex4](https://next.vuex.vuejs.org/zh/index.html)
 
 #### 安装
 ```bash
 npm init vite@latest vite-demo -- --template vue
 npm install vue-router@4 axios element-plus --save
+npm install vuex@next --save
 ```
 
 

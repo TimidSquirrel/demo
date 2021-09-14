@@ -16,7 +16,5 @@ export default defineConfig({
 	],
 	alias: {
 		"@": "src",
-		"@utils": "src/utils",
-		"@p": "src/pages",
 	},
 });
