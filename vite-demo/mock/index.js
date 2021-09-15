@@ -22,5 +22,15 @@ export default [
 				data: userInfo
 			}
 		}
+	},
+	{
+		url: "/api/logout",
+		method: "post",
+		response: () => {
+			return {
+				code: 0,
+				data: true
+			}
+		}
 	}
 ];

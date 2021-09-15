@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import {createRouter, createWebHistory} from 'vue-router';
 
 import Home from '../pages/Home.vue'
 import Dashboard from "../pages/Dashboard.vue";
@@ -33,7 +33,7 @@ let routes = [
 
 let menuList = localStorage.getItem('menu')
 
-if(!menuList) {
+if (!menuList) {
 	menuList = []
 }
 routes = routes.concat(menuList);
@@ -47,9 +47,9 @@ const router = createRouter({
 const whiteList = ['/login']
 router.beforeEach((to, from, next) => {
 	const token = localStorage.getItem('token')
-	if(token || whiteList.includes(to.path)) {
+	if (token || (whiteList.includes(to.path) && (to.path != '/'))) {
 		next()
-	}else{
+	} else {
 		next({name: 'Login'})
 	}
 })

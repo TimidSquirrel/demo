@@ -6,3 +6,6 @@ html,body,#app{
 #app{
 	position: relative;
 }
+.el-header{
+	background-color: beige;
+}

@@ -1,18 +1,9 @@
 import { createStore } from 'vuex'
+import global from './modules/global'
 
 const store = createStore({
-	state(){
-		return {
-			userInfo: ''
-		}
-	},
-	mutations: {
-		getUserInfo(state){
-			return this.state.userInfo;
-		},
-		setUserInfo(state, userInfo) {
-			state.userInfo = userInfo;
-		}
+	modules: {
+		global
 	}
 })
 

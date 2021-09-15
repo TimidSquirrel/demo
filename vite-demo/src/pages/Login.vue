@@ -3,13 +3,13 @@
 		<div class="logo">logo</div>
 		<el-form :model="form">
 			<el-form-item>
-				<el-input v-model="form.userName" placeholder="User"></el-input>
+				<el-input v-model="form.userName" prefix-icon="el-icon-user" placeholder="User"></el-input>
 			</el-form-item>
 			<el-form-item>
-				<el-input v-model="form.password" type="password" placeholder="Password"></el-input>
+				<el-input v-model="form.password" prefix-icon="el-icon-lock" type="password" placeholder="Password"></el-input>
 			</el-form-item>
 			<el-form-item>
-				<el-button type="primary" size="middle" round @click="submit">登 &nbsp; 录</el-button>
+				<el-button type="primary" size="medium" round @click="submit">登 &nbsp; 录</el-button>
 			</el-form-item>
 		</el-form>
 	</div>

@@ -31,3 +31,32 @@ node node_modules/esbuild/install.js
 ```
 
 - [如果你碰见vue-devtools不能用的情况,尝试安装它的beta版本吧,可能还需要翻墙](https://chrome.google.com/webstore/detail/vuejs-devtools/ljjemllljcmogpfapbkkighbhhppjdbg)
+
+
+#### 组合式 api 访问
+- vuex
+
+```js
+// vuex
+import {useStore} from 'vuex';
+
+	export default {
+		setup() {
+			const store = useStore()
+
+			return {
+				// 在 computed 函数中访问 state
+				count: computed(() => store.state.count),
+
+				// 在 computed 函数中访问 getter
+				double: computed(() => store.getters.double),
+
+				// 使用 mutation
+				increment: () => store.commit('increment'),
+
+				// 使用 action
+				asyncIncrement: () => store.dispatch('asyncIncrement')
+			}
+		}
+	}
+```
