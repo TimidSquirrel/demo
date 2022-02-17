@@ -1,15 +1,16 @@
 <template>
 	<div class="login">
 		<div class="logo">logo</div>
-		<el-form :model="form">
-			<el-form-item>
+		<el-form ref="form" :model="form" :rules="rules">
+			<el-form-item prop="userName">
 				<el-input v-model="form.userName" prefix-icon="el-icon-user" placeholder="User"></el-input>
 			</el-form-item>
-			<el-form-item>
+			<el-form-item prop="password">
 				<el-input v-model="form.password" prefix-icon="el-icon-lock" type="password" placeholder="Password"></el-input>
 			</el-form-item>
 			<el-form-item>
 				<el-button type="primary" size="medium" round @click="submit">登 &nbsp; 录</el-button>
+				<el-button type="primary" size="medium" round @click="register">注 &nbsp; 册</el-button>
 			</el-form-item>
 		</el-form>
 	</div>
@@ -25,18 +26,41 @@
 				form: {
 					userName: '',
 					password: ''
-				}
+				},
+				rules: {
+					userName: [
+						{
+							required: true,
+							trigger: ['change','blur'],
+							message: '用户名不能为空',
+						}
+					],
+					password: [
+						{
+							required: true,
+							trigger: ['change','blur'],
+							message: '密码不能为空',
+						}
+					],
+				},
 			}
 		},
 		methods: {
 			submit() {
-				login(this.form).then(res => {
-					if(res.code === 0) {
-						this.$store.commit('setUserInfo', res.data.userInfo)
-						localStorage.setItem('token', res.data.token)
-						this.$router.push('/')
+				this.$refs.form.validate((isValid) => {
+					if(isValid) {
+						login(this.form).then(res => {
+							if(res.code === 0) {
+								this.$store.commit('setUserInfo', res.data.userInfo)
+								localStorage.setItem('token', res.data.token)
+								this.$router.push('/')
+							}
+						})
 					}
 				})
+			},
+			register() {
+				this.$router.push('/register')
 			}
 		}
 	}
@@ -56,6 +80,7 @@
 		border: 1px solid #ccc;
 		border-radius: 20px;
 		box-shadow: 0 0 10px #cccccc;
+		background-color: #dbd5d5;
 	}
 	.logo{
 		height: 100px;

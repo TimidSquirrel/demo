@@ -5,6 +5,7 @@ html,body,#app{
 }
 #app{
 	position: relative;
+	background-color: #faebd7;
 }
 .el-header{
 	background-color: beige;

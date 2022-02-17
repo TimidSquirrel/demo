@@ -4,6 +4,7 @@ import Home from '../pages/Home.vue'
 import Dashboard from "../pages/Dashboard.vue";
 import ErrorPage from "../pages/ErrorPage.vue";
 import Login from "../pages/Login.vue";
+import Register from "../pages/Register.vue";
 
 let routes = [
 	{
@@ -26,6 +27,11 @@ let routes = [
 		path: '/login',
 		name: 'Login',
 		component: Login
+	},
+	{
+		path: '/register',
+		name: 'Register',
+		component: Register,
 	}
 ]
 
