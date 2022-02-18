@@ -10,7 +10,7 @@
 			</el-form-item>
 			<el-form-item>
 				<el-button type="primary" size="medium" round @click="submit">登 &nbsp; 录</el-button>
-				<el-button type="primary" size="medium" round @click="register">注 &nbsp; 册</el-button>
+				<el-button type="primary" size="medium" round @click="toRegister">注 &nbsp; 册</el-button>
 			</el-form-item>
 		</el-form>
 	</div>
@@ -49,9 +49,14 @@
 			submit() {
 				this.$refs.form.validate((isValid) => {
 					if(isValid) {
-						login(this.form).then(res => {
+						login(this.form).then((res) => {
 							if(res.code === 0) {
-								this.$store.commit('setUserInfo', res.data.userInfo)
+								console.log(res)
+								// this.$store.commit('setUserInfo', res.data.userInfo)
+								// this.$store.commit('setMenu', res.data.menuList)
+								console.log(JSON.stringify(res.data.userInfo))
+								localStorage.setItem('userInfo', JSON.stringify(res.data.userInfo))
+								localStorage.setItem('menuList', JSON.stringify(res.data.menuList))
 								localStorage.setItem('token', res.data.token)
 								this.$router.push('/')
 							}
@@ -59,7 +64,7 @@
 					}
 				})
 			},
-			register() {
+			toRegister() {
 				this.$router.push('/register')
 			}
 		}

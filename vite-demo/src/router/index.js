@@ -5,6 +5,7 @@ import Dashboard from "../pages/Dashboard.vue";
 import ErrorPage from "../pages/ErrorPage.vue";
 import Login from "../pages/Login.vue";
 import Register from "../pages/Register.vue";
+import User from "../pages/systemSetting/User.vue";
 
 let routes = [
 	{
@@ -15,8 +16,13 @@ let routes = [
 				path: '',
 				name: 'Dashboard',
 				component: Dashboard
+			},
+			{
+				path: 'user',
+				name: "User",
+				component: User,
 			}
-		]
+		],
 	},
 	{
 		path: '/404',
@@ -31,13 +37,13 @@ let routes = [
 	{
 		path: '/register',
 		name: 'Register',
-		component: Register,
+		component: Register
 	}
 ]
 
 // 获取本地路由
 
-let menuList = localStorage.getItem('menu')
+let menuList = JSON.parse(localStorage.getItem('menuList'))
 
 if (!menuList) {
 	menuList = []
@@ -50,10 +56,12 @@ const router = createRouter({
 	routes: routes
 })
 
-const whiteList = ['/login']
+const whiteList = ['/login','/register']
 router.beforeEach((to, from, next) => {
 	const token = localStorage.getItem('token')
 	if (token || (whiteList.includes(to.path) && (to.path != '/'))) {
+		console.log(to)
+		console.log(from)
 		next()
 	} else {
 		next({name: 'Login'})

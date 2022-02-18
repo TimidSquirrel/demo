@@ -8,36 +8,51 @@
 		background-color="#545c64"
 		text-color="#fff"
 		active-text-color="#ffd04b"
+		:router="true"
 	>
-		<el-sub-menu index="1">
+<!--		<el-sub-menu index="1">-->
+<!--			<template #title>-->
+<!--				<i class="el-icon-location"></i>-->
+<!--				<span>导航一</span>-->
+<!--			</template>-->
+<!--			<el-menu-item-group>-->
+<!--				<template #title>分组一</template>-->
+<!--				<el-menu-item index="1-1">选项1</el-menu-item>-->
+<!--				<el-menu-item index="1-2">选项2</el-menu-item>-->
+<!--			</el-menu-item-group>-->
+<!--		</el-sub-menu>-->
+<!--		<el-sub-menu index="2">-->
+<!--			<template #title>-->
+<!--				<i class="el-icon-location"></i>-->
+<!--				<span>导航一</span>-->
+<!--			</template>-->
+<!--			<el-menu-item-group>-->
+<!--				<template #title>分组一</template>-->
+<!--				<el-menu-item index="1-1">选项1</el-menu-item>-->
+<!--				<el-menu-item index="1-2">选项2</el-menu-item>-->
+<!--			</el-menu-item-group>-->
+<!--		</el-sub-menu>-->
+		<el-sub-menu v-for="item in menuList" :key="item.name">
 			<template #title>
 				<i class="el-icon-location"></i>
-				<span>导航一</span>
+				<span>{{item.title}}</span>
 			</template>
-			<el-menu-item-group>
-				<template #title>分组一</template>
-				<el-menu-item index="1-1">选项1</el-menu-item>
-				<el-menu-item index="1-2">选项2</el-menu-item>
-			</el-menu-item-group>
-		</el-sub-menu>
-		<el-sub-menu index="2">
-			<template #title>
-				<i class="el-icon-location"></i>
-				<span>导航一</span>
-			</template>
-			<el-menu-item-group>
-				<template #title>分组一</template>
-				<el-menu-item index="1-1">选项1</el-menu-item>
-				<el-menu-item index="1-2">选项2</el-menu-item>
-			</el-menu-item-group>
+			<el-menu-item v-for="obj in item.children" :index="obj.path">{{obj.title}}</el-menu-item>
 		</el-sub-menu>
 	</el-menu>
 </template>
 
 <script>
-
     export default {
         name: "Aside",
+		data() {
+        	return {
+        		menuList: JSON.parse(localStorage.getItem('menuList')),
+			};
+		},
+		mounted() {
+        	console.log(this.menuList)
+		},
 		methods: {
 			handleOpen(){},
 			handleClose(){}

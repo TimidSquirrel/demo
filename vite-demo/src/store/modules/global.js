@@ -8,11 +8,15 @@ const mutations = {
 		state.userInfo = userInfo;
 	},
 	setMenu(menu) {
+		console.log(menu)
 		state.menu = menu;
 	},
 	logout(){
 		state.userInfo = {};
-		state.menu = []
+		state.menu = [];
+		localStorage.removeItem('menuList');
+		localStorage.removeItem('token');
+		localStorage.removeItem('userInfo');
 	}
 }
 
