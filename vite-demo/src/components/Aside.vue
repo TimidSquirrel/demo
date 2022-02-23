@@ -35,25 +35,30 @@
 		<el-sub-menu v-for="item in menuList" :key="item.name">
 			<template #title>
 				<i class="el-icon-location"></i>
-				<span>{{item.title}}</span>
+				<span>123</span>
 			</template>
-			<el-menu-item v-for="obj in item.children" :index="obj.path">{{obj.title}}</el-menu-item>
+<!--			<el-menu-item v-for="obj in item.children" :index="obj.path">{{obj.title}}</el-menu-item>-->
 		</el-sub-menu>
 	</el-menu>
 </template>
 
 <script>
+    import {handleMenuListToRoutes} from "../utils/util";
+
     export default {
         name: "Aside",
 		data() {
         	return {
-        		menuList: JSON.parse(localStorage.getItem('menuList')),
+        		menuList: [],
 			};
 		},
 		mounted() {
-        	console.log(this.menuList)
+			this.init()
 		},
 		methods: {
+      init() {
+          handleMenuListToRoutes()
+			},
 			handleOpen(){},
 			handleClose(){}
 		}
